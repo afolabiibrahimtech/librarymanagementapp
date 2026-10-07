@@ -1,0 +1,27 @@
+@model List<librarymanagementapp.Models.BookModel>
+
+<h2>Book List</h2>
+
+<a asp-action="Create" class="btn btn-primary">Add New Book</a>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Year</th>
+        <th></th>
+    </tr>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.Year</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@book.Id">Details</a> |
+                <a asp-action="Edit" asp-route-id="@book.Id">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@book.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
