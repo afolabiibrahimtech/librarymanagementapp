@@ -60,5 +60,18 @@ namespace librarymanagementapp.Controllers
             ViewBag.Books = BookController.books;
             return View(borrow);
         }
+
+        [HttpPost]
+        public IActionResult Return(int id)
+        {
+            foreach (var borrow in borrows)
+            {
+                if (borrow.Id == id)
+                {
+                    borrow.ReturnDate = DateTime.Today;
+                }
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
