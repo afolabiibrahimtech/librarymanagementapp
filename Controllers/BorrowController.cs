@@ -25,6 +25,19 @@ namespace librarymanagementapp.Controllers
         [HttpPost]
         public IActionResult Create(BorrowModel borrow)
         {
+            foreach (var b in borrows)
+            {
+                if (b.BookId == borrow.BookId && b.ReturnDate == null)
+                {
+                    ModelState.AddModelError("BookId", "This book is already borrowed and has not been returned.");
+                }
+            }
+
+            if (borrow.BorrowDate > DateTime.Today)
+            {
+                ModelState.AddModelError("BorrowDate", "Borrow date cannot be in the future.");
+            }
+
             if (ModelState.IsValid)
             {
                 foreach (var student in StudentController.students)
@@ -66,7 +79,7 @@ namespace librarymanagementapp.Controllers
         {
             foreach (var borrow in borrows)
             {
-                if (borrow.Id == id)
+                if (borrow.Id == id && borrow.ReturnDate == null)
                 {
                     borrow.ReturnDate = DateTime.Today;
                 }
