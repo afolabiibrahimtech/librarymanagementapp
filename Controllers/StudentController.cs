@@ -5,7 +5,12 @@ namespace librarymanagementapp.Controllers
 {
     public class StudentController : Controller
     {
-        private static List<StudentModel> students = new List<StudentModel>();
+        public static List<StudentModel> students = new List<StudentModel>()
+        {
+            new StudentModel { Id = 1, Name = "John Smith", Email = "john@email.com", Phone = "403-555-1234" },
+            new StudentModel { Id = 2, Name = "Sara Lee", Email = "sara@email.com", Phone = "403-555-5678" },
+            new StudentModel { Id = 3, Name = "David Brown", Email = "david@email.com", Phone = "403-555-9012" }
+        };
 
         public IActionResult Index()
         {

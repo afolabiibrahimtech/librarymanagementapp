@@ -5,7 +5,7 @@ namespace librarymanagementapp.Controllers
 {
     public class BookController : Controller
     {
-        private static List<BookModel> books = new List<BookModel>()
+        public static List<BookModel> books = new List<BookModel>()
         {
             new BookModel { Id = 1, Title = "1984", Author = "George Orwell", Year = 1949 },
             new BookModel { Id = 2, Title = "The Hobbit", Author = "J.R.R. Tolkien", Year = 1937 }
