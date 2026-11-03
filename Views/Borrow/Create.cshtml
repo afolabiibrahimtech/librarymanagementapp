@@ -3,36 +3,36 @@
 <h2>Record Borrow</h2>
 
 <form asp-action="Create" method="post">
-    <div>
-        <label asp-for="StudentId"></label>
-        <select asp-for="StudentId">
+    <div class="mb-3">
+        <label asp-for="StudentId" class="form-label"></label>
+        <select asp-for="StudentId" class="form-select">
             <option value="0">-- Select a student --</option>
             @foreach (var student in ViewBag.Students)
             {
                 <option value="@student.Id">@student.Name</option>
             }
         </select>
-        <span asp-validation-for="StudentId"></span>
+        <span asp-validation-for="StudentId" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="BookId"></label>
-        <select asp-for="BookId">
+    <div class="mb-3">
+        <label asp-for="BookId" class="form-label"></label>
+        <select asp-for="BookId" class="form-select">
             <option value="0">-- Select a book --</option>
             @foreach (var book in ViewBag.Books)
             {
                 <option value="@book.Id">@book.Title</option>
             }
         </select>
-        <span asp-validation-for="BookId"></span>
+        <span asp-validation-for="BookId" class="text-danger"></span>
     </div>
 
-    <div>
-        <label asp-for="BorrowDate"></label>
-        <input asp-for="BorrowDate" />
-        <span asp-validation-for="BorrowDate"></span>
+    <div class="mb-3">
+        <label asp-for="BorrowDate" class="form-label"></label>
+        <input asp-for="BorrowDate" class="form-control" />
+        <span asp-validation-for="BorrowDate" class="text-danger"></span>
     </div>
 
-    <button type="submit">Save</button>
-    <a asp-action="Index">Cancel</a>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>
