@@ -1,0 +1,30 @@
+@model List<librarymanagementapp.Models.BorrowModel>
+
+<h2>Borrowing List</h2>
+
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Book</th>
+        <th>Borrow Date</th>
+        <th>Return Date</th>
+    </tr>
+    @foreach (var borrow in Model)
+    {
+        <tr>
+            <td>@borrow.Student?.Name</td>
+            <td>@borrow.Book?.Title</td>
+            <td>@borrow.BorrowDate.ToShortDateString()</td>
+            <td>
+                @if (borrow.ReturnDate == null)
+                {
+                    <span>Not returned</span>
+                }
+                else
+                {
+                    @borrow.ReturnDate.Value.ToShortDateString()
+                }
+            </td>
+        </tr>
+    }
+</table>
