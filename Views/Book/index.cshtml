@@ -1,27 +1,43 @@
 @model List<librarymanagementapp.Models.BookModel>
 
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.min.css" />
+
 <h2>Book List</h2>
 
-<a asp-action="Create" class="btn btn-primary">Add New Book</a>
+<a asp-action="Create" class="btn btn-primary mb-3">Add New Book</a>
 
-<table class="table">
-    <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Year</th>
-        <th></th>
-    </tr>
-    @foreach (var book in Model)
-    {
+<table id="bookTable" class="table">
+    <thead>
         <tr>
-            <td>@book.Title</td>
-            <td>@book.Author</td>
-            <td>@book.Year</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@book.Id">Details</a> |
-                <a asp-action="Edit" asp-route-id="@book.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@book.Id">Delete</a>
-            </td>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Year</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@book.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@book.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@book.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#bookTable').DataTable();
+        });
+    </script>
+}

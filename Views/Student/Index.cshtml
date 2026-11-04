@@ -1,10 +1,12 @@
 @model List<librarymanagementapp.Models.StudentModel>
 
+<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.min.css" />
+
 <h2>Student List</h2>
 
 <a asp-action="Create" class="btn btn-primary mb-3">Add New Student</a>
 
-<table class="table">
+<table id="studentTable" class="table">
     <thead>
         <tr>
             <th>Name</th>
@@ -27,3 +29,13 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#studentTable').DataTable();
+        });
+    </script>
+}
